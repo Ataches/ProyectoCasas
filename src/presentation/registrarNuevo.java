@@ -21,7 +21,7 @@ import jxl.write.*;
 @SuppressWarnings("serial")
 public class registrarNuevo extends JFrame implements ActionListener{
 	String nombre, descp, ciudad, tipo, clase, tel, estado, deuda, barrio,nombreP;
-	int habs, precio, metros, baños, antiguedad;
+	int habs, precio, metros, numberBathroom, antiguedad;
 	int fila;
 
 	JButton guardar = new JButton ("Guardar");
@@ -32,7 +32,7 @@ public class registrarNuevo extends JFrame implements ActionListener{
 	JLabel lprecio = new JLabel();
 	JLabel lhabs = new JLabel();
 	JLabel ldescp = new JLabel();
-	JLabel lbaños = new JLabel();
+	JLabel lnumberBathroom = new JLabel();
 	JLabel ltipo = new JLabel();
 	JLabel lciudad = new JLabel();
 	JLabel lnombre = new JLabel();
@@ -51,7 +51,7 @@ public class registrarNuevo extends JFrame implements ActionListener{
 	JTextField tclase = new JTextField(30);
 	JTextArea tdescp = new JTextArea(2, 30);
 	JTextField testado = new JTextField(30);
-	JTextField tbaños = new JTextField(30);
+	JTextField tnumberBathroom = new JTextField(30);
 	JTextField thabs = new JTextField(30);
 	JTextField ttipo = new JTextField(30);
 	JTextField tdeuda = new JTextField(30);
@@ -121,11 +121,11 @@ public class registrarNuevo extends JFrame implements ActionListener{
 		c.add(tantiguedad);
 		tantiguedad.setBounds(600, 405, 20, 23);
 
-		c.add(lbaños);
-		lbaños.setText("baños: ");
-		lbaños.setBounds(530, 430, 100, 23);
-		c.add(tbaños);
-		tbaños.setBounds(600, 430, 20, 23);
+		c.add(lnumberBathroom);
+		lnumberBathroom.setText("numberBathroom: ");
+		lnumberBathroom.setBounds(530, 430, 100, 23);
+		c.add(tnumberBathroom);
+		tnumberBathroom.setBounds(600, 430, 20, 23);
 
 
 		c.add(lnombre);
@@ -135,7 +135,7 @@ public class registrarNuevo extends JFrame implements ActionListener{
 		tnombre.setBounds(120, 175, 400, 23);
 
 		c.add(ldescp);
-		ldescp.setText("Descripción: ");
+		ldescp.setText("DescripciÃ³n: ");
 		ldescp.setBounds(40, 205, 80, 23);
 		c.add(tdescp);
 		tdescp.setBounds(120, 205, 400, 112);
@@ -157,8 +157,8 @@ public class registrarNuevo extends JFrame implements ActionListener{
 		lciudad.setBounds(40, 325, 50, 23);
 		c.add(listaCiudades);
 		listaCiudades.setBounds(120,325,80,20);
-		listaCiudades.addItem("¿Ciudad?");
-		listaCiudades.addItem("Bogotá");
+		listaCiudades.addItem("Â¿Ciudad?");
+		listaCiudades.addItem("BogotÃ¡");
 		listaCiudades.addItem("Medellin");
 		listaCiudades.addItem("Cartagena");
 		listaCiudades.addItem("Barrinquilla");
@@ -171,7 +171,7 @@ public class registrarNuevo extends JFrame implements ActionListener{
 		lclase.setBounds(40, 355, 150, 23);
 		c.add(listaClase);
 		listaClase.setBounds(120, 355,115,20);
-		listaClase.addItem("¿Que buscas?");
+		listaClase.addItem("Â¿Que buscas?");
 		listaClase.addItem("Casa");
 		listaClase.addItem("Apartamento");
 		listaClase.addItem("Local");	
@@ -181,7 +181,7 @@ public class registrarNuevo extends JFrame implements ActionListener{
 		lestado.setBounds(40,380, 150, 23);
 		c.add(listaEstado);	
 		listaEstado.setBounds(120, 380, 125,20);
-		listaEstado.addItem("¿Nuevo o usado?");
+		listaEstado.addItem("Â¿Nuevo o usado?");
 		listaEstado.addItem("Nuevo");
 		listaEstado.addItem("Usado");
 
@@ -190,7 +190,7 @@ public class registrarNuevo extends JFrame implements ActionListener{
 		ltipo.setBounds(40, 405, 150, 23);
 		c.add(listaTipo);
 		listaTipo.setBounds(120, 405,150,20);
-		listaTipo.addItem("¿En venta o arriendo?");
+		listaTipo.addItem("Â¿En venta o arriendo?");
 		listaTipo.addItem("Venta");
 		listaTipo.addItem("Arriendo");
 		listaTipo.addItem("Permuta");
@@ -235,8 +235,8 @@ public class registrarNuevo extends JFrame implements ActionListener{
 		metros = Integer.parseInt(smetros);
 		String santiguedad= tantiguedad.getText();
 		antiguedad = Integer.parseInt(santiguedad);
-		String sbaños= tbaños.getText();
-		baños = Integer.parseInt(sbaños);
+		String snumberBathroom= tnumberBathroom.getText();
+		numberBathroom = Integer.parseInt(snumberBathroom);
 		nombreP = tnombreP.getText();
 		tel= ttel.getText();
 
@@ -268,7 +268,7 @@ public class registrarNuevo extends JFrame implements ActionListener{
 			sheet.addCell(new jxl.write.Label(9, nFila, deuda));
 			sheet.addCell(new jxl.write.Number(10, nFila, metros));
 			sheet.addCell(new jxl.write.Label(11, nFila, barrio));
-			sheet.addCell(new jxl.write.Number(12, nFila, baños));
+			sheet.addCell(new jxl.write.Number(12, nFila, numberBathroom));
 			sheet.addCell(new jxl.write.Number(13, nFila, antiguedad));
 			sheet.addCell(new jxl.write.Label(15, nFila, nombreP));
 			sheet.addCell(new jxl.write.Label(16, nFila, tel));

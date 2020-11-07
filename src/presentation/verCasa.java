@@ -42,7 +42,7 @@ public class verCasa extends JFrame implements ActionListener  {
 	JLabel lmetros = new JLabel();
 	JLabel ldeuda = new JLabel();
 	JLabel lprecio = new JLabel();
-	JLabel lbaños = new JLabel();
+	JLabel lnumberBathroom = new JLabel();
 	JLabel lestado = new JLabel();
 	JLabel lantiguedad = new JLabel();
 	JLabel lnombreP = new JLabel();
@@ -53,13 +53,13 @@ public class verCasa extends JFrame implements ActionListener  {
 	int boton, numero;
 	String descp, nombre, where;
 
-	void Main(){
+	public void Main(){
 		verCasa p=new verCasa(boton, descp);
 		p.setSize(800, 600);
 		p.setVisible(true);
 	}
 
-	verCasa(int i, String descp){
+	public verCasa(int i, String descp){
 		super("Ver oferta");
 
 		this.descp = descp;
@@ -82,7 +82,7 @@ public class verCasa extends JFrame implements ActionListener  {
 		c.add(ldeuda);
 		c.add(lprecio);
 		c.add(lantiguedad);
-		c.add(lbaños);
+		c.add(lnumberBathroom);
 		c.add(lestado);
 		c.add(lnombreP);
 		c.add(ltel);
@@ -204,9 +204,9 @@ public class verCasa extends JFrame implements ActionListener  {
 					lbarrio.setText(sdato);
 					lbarrio.setBounds(490, 190, 70, 23);
 					break;
-				case 12://Baños	
-					lbaños.setText("Baños: "+sdato);
-					lbaños.setBounds(440, 330, 70, 23);
+				case 12://numberBathroom	
+					lnumberBathroom.setText("numberBathroom: "+sdato);
+					lnumberBathroom.setBounds(440, 330, 70, 23);
 					break;	
 				case 13://antiguedad
 					lantiguedad.setText("Antiguedad: "+sdato);

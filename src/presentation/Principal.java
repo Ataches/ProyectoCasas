@@ -1,10 +1,15 @@
 package presentation;
 
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.MediaTracker;
-import java.awt.Toolkit;
+import jxl.Cell;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -12,15 +17,6 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
-import jxl.Cell;
-import jxl.Workbook;
-import jxl.read.biff.BiffException;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
 
 
 @SuppressWarnings("serial")

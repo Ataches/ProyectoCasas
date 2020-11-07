@@ -63,7 +63,7 @@ public class export_excel {
 		WritableFont times10pt = new WritableFont(WritableFont.TAHOMA, 14);
 		// definimos el formato d ela celda
 		WritableCellFormat	times = new WritableCellFormat(times10pt);
-		// Permite si se ajusta autom�ticamente a las c�lulas
+		// Permite si se ajusta automáticamente a las c�lulas
 		//times.setWrap(true);
 		// crea una negrita con subrayado
 		WritableFont times10ptBoldUnderline = new WritableFont(WritableFont.TAHOMA, 11, WritableFont.BOLD, false,UnderlineStyle.SINGLE);
