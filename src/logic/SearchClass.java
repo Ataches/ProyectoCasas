@@ -256,7 +256,7 @@ public class SearchClass extends JFrame implements ActionListener{
 
 
 			String[][] sugeridos= new String [fila][3];
-			int[][] numSg = new int [fila][3];
+			int[][] matrixSiguiente = new int [fila][3];
 			fila--;
 			fil4=fila;
 			int[] nobuscar = new int[99];
@@ -370,13 +370,14 @@ public class SearchClass extends JFrame implements ActionListener{
 				Cell titulo = sheet.getCell(1,i);
 				String sugerido = titulo.getContents();
 				if(nobuscar[i] != 1){
-					numSg[i][0] = leven.computeLevenshteinDistance(sugerido, descp);
+					sugerido.contains(descp);
+					matrixSiguiente[i][0] = leven.computeLevenshteinDistance(sugerido, descp);
 					sugeridos[i][1] = sugerido;
-					numSg[i][2] = i;
+					matrixSiguiente[i][2] = i;
 				}else{
-					numSg[i][0] = 999999;
+					matrixSiguiente[i][0] = 999999;
 					sugeridos[i][1] = "no buscar imagen oooooooooooooooooooooooooooooo";
-					numSg[i][2] = 9999999;
+					matrixSiguiente[i][2] = 9999999;
 				}
 			}
 
@@ -388,27 +389,27 @@ public class SearchClass extends JFrame implements ActionListener{
 
 				for(int j = 1; j < fila; j++)
 				{
-					if (numSg[j][0] > numSg[j + 1][0])
+					if (matrixSiguiente[j][0] > matrixSiguiente[j + 1][0])
 					{
-						aux = numSg[j][0];
-						numSg[j][0] = numSg[j+1][0] ;
-						numSg[j+1][0] = aux;
+						aux = matrixSiguiente[j][0];
+						matrixSiguiente[j][0] = matrixSiguiente[j+1][0] ;
+						matrixSiguiente[j+1][0] = aux;
 
 						saux = sugeridos[j][1];
 						sugeridos[j][1] = sugeridos[j+1][1];
 						sugeridos[j+1][1] = saux;	
 
-						aux = numSg[j][2];
-						numSg[j][2] = numSg[j+1][2] ;
-						numSg[j+1][2] = aux;
+						aux = matrixSiguiente[j][2];
+						matrixSiguiente[j][2] = matrixSiguiente[j+1][2] ;
+						matrixSiguiente[j+1][2] = aux;
 					}
 				}
 			}
 
 			for (int i=1 ; i<=fila;i++){
-				System.out.println(" Leven "+numSg[i][0]);
+				System.out.println(" Leven "+matrixSiguiente[i][0]);
 				System.out.println(" sugerido "+sugeridos[i][1]);
-				System.out.println(" numero lista "+numSg[i][2]);
+				System.out.println(" numero lista "+matrixSiguiente[i][2]);
 			}
 
 			int cont=0, cont2=0, falso;
@@ -429,7 +430,7 @@ public class SearchClass extends JFrame implements ActionListener{
 						boton(i);
 					}
 					for (int j = 1; j<=14; j++){
-						Cell dato = sheet.getCell(j,numSg[i][2]);
+						Cell dato = sheet.getCell(j,matrixSiguiente[i][2]);
 						String sdato = dato.getContents();
 						int a = 150;
 						if(falso==1){
@@ -490,9 +491,9 @@ public class SearchClass extends JFrame implements ActionListener{
 
 			for (int i = 0; i<=fil4;i++){
 
-				GnumSg[i][0] = numSg[i][0];
+				GnumSg[i][0] = matrixSiguiente[i][0];
 				Gsugeridos[i][1] = sugeridos[i][1];
-				GnumSg[i][2] = numSg[i][2];
+				GnumSg[i][2] = matrixSiguiente[i][2];
 			}
 
 		}
@@ -512,7 +513,7 @@ public class SearchClass extends JFrame implements ActionListener{
 		tk = Toolkit.getDefaultToolkit();
 		for (int i=1; i<=5;i++ ){
 			if(pint[i]!=0){
-				String ubicacion = String.format("/icasas/casa00"+pint[i]+".jpg");
+				String ubicacion = "/icasas/casa00" + pint[i] + ".jpg";
 				imagen[i] = tk.getImage(getClass().getResource(ubicacion));
 				try {
 					tracker.addImage(imagen[i], 1);

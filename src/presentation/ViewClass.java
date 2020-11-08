@@ -1,6 +1,7 @@
 package presentation;
 
 import logic.SearchClass;
+import presentation.window.Home;
 
 import javax.swing.*;
 import java.util.List;
